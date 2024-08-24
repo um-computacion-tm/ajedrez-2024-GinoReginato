@@ -1,8 +1,11 @@
-from pieces import Piece
+from piece import Piece
 
 class Rook(Piece):
-
-    def valid_moves(self, actual_position, board):
+    
+    def __init__(self, color):
+        super().__init__(color)
+    
+    def ValidMoves(self, actual_position, board):
         x, y = actual_position
         movimientos = []
 
@@ -29,7 +32,3 @@ class Rook(Piece):
                     break
 
         return movimientos
-
-
-
-        

@@ -7,4 +7,4 @@ class TestCli(unittest.TestCase):
         "builtins.imput",
         side_effect=['1','1','2','2']
     )
-    @patch
+    #@patch

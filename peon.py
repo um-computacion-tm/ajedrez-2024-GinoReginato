@@ -1,4 +1,4 @@
-from pieces import Piece
+from piece import Piece
 
 class Peon(Piece):
     def __init__(self, color):
