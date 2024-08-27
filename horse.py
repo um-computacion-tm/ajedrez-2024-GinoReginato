@@ -1,7 +1,7 @@
 from piece import Piece    
 
 class Horse(Piece):
-    def movimientos_validos(self, actual_position, Board):
+    def ValidMoves(self, actual_position, Board):
         x, y = actual_position
         movimientos = []
 
