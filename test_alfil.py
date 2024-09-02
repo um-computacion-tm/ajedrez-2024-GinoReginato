@@ -11,8 +11,7 @@ class TestAlfil(unittest.TestCase):
         
         movimientos = alfil.ValidMoves(actual_position, board)
         
-    
-        self.assertIn((5, 5), movimientos) 
+        self.assertIn((5, 5), movimientos)
         self.assertIn((3, 3), movimientos)
         self.assertIn((2, 6), movimientos)
 
@@ -20,12 +19,12 @@ class TestAlfil(unittest.TestCase):
         board = [[None for _ in range(8)] for _ in range(8)]
         alfil = Alfil('White')
         actual_position = (4, 4)
-        board[6][6] = Piece('Black')
+        board[6][6] = Alfil('Black')
 
         movimientos = alfil.ValidMoves(actual_position, board)
-        
         
         self.assertIn((6, 6), movimientos)
 
 if __name__ == "__main__":
     unittest.main()
+
