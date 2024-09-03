@@ -20,7 +20,7 @@ class King(Piece):
             if 0 <= nx < 8 and 0 <= ny < 8:
                 if board[nx][ny] is None: 
                     movimientos.append((nx, ny))
-                elif board[nx][ny].color != self.color: 
+                elif board[nx][ny].get_color() != self.get_color(): 
                     movimientos.append((nx, ny))
 
         return movimientos

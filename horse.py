@@ -17,7 +17,7 @@ class Horse(Piece):
             if 0 <= nx < 8 and 0 <= ny < 8:
                 if Board[nx][ny] is None: 
                     movimientos.append((nx, ny))
-                elif Board[nx][ny].color != self.color: 
+                elif Board[nx][ny].get_color() != self.get_color(): 
                     movimientos.append((nx, ny))
 
         return movimientos
