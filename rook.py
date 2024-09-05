@@ -2,14 +2,11 @@ from piece import Piece
 
 class Rook(Piece):
     
-    def __init__(self, color):
-        super().__init__(color)
-    
     def ValidMoves(self, actual_position, board):
         x, y = actual_position
         movimientos = []
 
-        # Movimientos hacia arriba y abajo
+
         direcciones = [(0, 1), (0, -1), (1, 0), (-1, 0)]
 
         for dx, dy in direcciones:
@@ -21,14 +18,14 @@ class Rook(Piece):
                 
             
                 if 0 <= actual_x < 8 and 0 <= actual_y < 8:
-                    if board[actual_x][actual_y] is None:  # La casilla está vacía
+                    if board[actual_x][actual_y] is None:  
                         movimientos.append((actual_x, actual_y))
-                    elif board[actual_x][actual_y].color != self.color:  # Pieza en el camino
+                    elif board[actual_x][actual_y].get_color() != self.get_color():
                         movimientos.append((actual_x, actual_y))
-                        break  # Choca con otra pieza para comer
+                        break  
                     else: 
                         break
-                else:           # Pieza del mismo color
+                else:           
                     break
 
         return movimientos
