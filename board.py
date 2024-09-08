@@ -1,6 +1,6 @@
 from rook import Rook
 from horse import Horse
-from alfil import Alfil
+from bishop import Bishop
 from king import King
 from queen import Queen
 from peon import Peon
@@ -18,10 +18,10 @@ class Board:
         self.position[7][7] = Rook("White")
         self.position[7][0] = Rook("White")
 
-        self.position[0][2] = Alfil("Black")
-        self.position[0][5] = Alfil("Black")
-        self.position[7][2] = Alfil("White")
-        self.position[7][5] = Alfil("White")
+        self.position[0][2] = Bishop("Black")
+        self.position[0][5] = Bishop("Black")
+        self.position[7][2] = Bishop("White")
+        self.position[7][5] = Bishop("White")
 
         self.position[0][1] = Horse("Black")
         self.position[0][6] = Horse("Black")
