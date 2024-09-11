@@ -19,11 +19,19 @@ def play(chess):
             raise OutOfBoardError("Movimiento fuera del tablero")
 
         chess.move(from_row, from_col, to_row, to_col)
+        piece = chess.get_piece(from_row, from_col)
+        
+        if piece is None or piece.get_color() != chess.turn:
+            raise WrongPieceError("Estás intentando mover una pieza incorrecta")
 
-    except OutOfBoardError as e:
+        chess.move(from_row, from_col, to_row, to_col)
+
+    except WrongPieceError as e:
         print(e)
     except InvalidMove as e:
         print("Movimiento no válido")
+    except OutOfBoardError as e:
+        print(e)
     except Exception as e:
         print("Error:", e)
 
