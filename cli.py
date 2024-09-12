@@ -1,4 +1,4 @@
-from chess import Chess, OutOfBoardError, InvalidMove
+from chess import Chess, OutOfBoardError, InvalidMove, WrongPieceError
 
 def main():
     chess = Chess()
@@ -13,12 +13,10 @@ def play(chess):
         to_row = int(input("To Row: "))
         to_col = int(input("To Col: "))
 
-        
-        
+
         if not (0 <= from_row <= 7 and 0 <= from_col <= 7 and 0 <= to_row <= 7 and 0 <= to_col <= 7):
             raise OutOfBoardError("Movimiento fuera del tablero")
 
-        chess.move(from_row, from_col, to_row, to_col)
         piece = chess.get_piece(from_row, from_col)
         
         if piece is None or piece.get_color() != chess.turn:

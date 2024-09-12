@@ -6,6 +6,9 @@ class InvalidMove(Exception):
     """Excepción para movimientos inválidos en el ajedrez."""
     pass
 
+class WrongPieceError(Exception):
+    pass
+
 from board import Board
 
 class Chess:

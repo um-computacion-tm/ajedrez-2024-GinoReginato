@@ -25,11 +25,11 @@ class TestCli(unittest.TestCase):
     @patch("builtins.print")
     @patch.object(Chess, 'move')
     def test_out_of_board_move(
-        self, 
-        mock_chess_move, 
-        mock_print, 
-        mock_input
-        ):
+    self, 
+    mock_chess_move, 
+    mock_print, 
+    mock_input
+    ):
         chess = Chess()
         play(chess)
         self.assertEqual(mock_input.call_count, 4)
@@ -39,12 +39,31 @@ class TestCli(unittest.TestCase):
 
     @patch("builtins.input", side_effect=[1, 1, 2, 2])
     @patch("builtins.print")
-    def test_invalid_move(self, mock_print, mock_input):
+    def test_invalid_move(
+    self,
+    mock_print,
+    mock_input
+    ):
         chess = Chess()
         with patch.object(Chess, 'move', side_effect=InvalidMove):
             play(chess)
 
         mock_print.assert_called_with("Movimiento no válido")
+
+    @patch('builtins.input', side_effect=[0, 0, 2, 2])
+    @patch('builtins.print')
+    @patch.object(Chess, 'move', side_effect=WrongPieceError("Estás intentando mover una pieza incorrecta"))
+    def test_wrong_piece_error(
+    self, 
+    mock_chess_move, 
+    mock_print, 
+    mock_input
+    ):
+        chess = Chess()
+        play(chess)
+        self.assertEqual(mock_input.call_count, 4)
+        mock_print.assert_any_call("Estás intentando mover una pieza incorrecta")
+        self.assertEqual(mock_chess_move.call_count, 1)
 
 if __name__ == '__main__':
     unittest.main()
